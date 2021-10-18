@@ -20,3 +20,4 @@ gem "rspec", "~> 3.0"
  gem 'pry'
  gem 'sinatra-activerecord', :require => 'sinatra/activerecord'
  gem 'database_cleaner'
+ gem 'awesome_print'

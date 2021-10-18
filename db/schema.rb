@@ -10,20 +10,27 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2) do
+ActiveRecord::Schema.define(version: 3) do
 
   create_table "players", force: :cascade do |t|
     t.string "name"
-    t.string "team"
+    t.integer "team_id"
+    t.integer "url_info"
     t.text "description"
     t.string "info"
     t.string "advice"
     t.string "stats"
   end
 
+  create_table "teams", force: :cascade do |t|
+    t.string "name"
+    t.string "name2"
+  end
+
   create_table "url_infos", force: :cascade do |t|
     t.string "name_url"
     t.string "team_url"
+    t.string "id_url"
   end
 
 end
