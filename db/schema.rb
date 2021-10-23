@@ -10,27 +10,53 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 3) do
+ActiveRecord::Schema.define(version: 6) do
+
+  create_table "info", force: :cascade do |t|
+    t.integer "player_id"
+    t.string "dob"
+    t.string "height"
+    t.string "weight"
+    t.string "nationality"
+    t.string "shirt_number"
+  end
+
+  create_table "performance", force: :cascade do |t|
+    t.integer "player_id"
+    t.string "avarage_performance"
+    t.string "avarage_fantasy_performance"
+  end
 
   create_table "players", force: :cascade do |t|
     t.string "name"
     t.integer "team_id"
-    t.integer "url_info"
-    t.text "description"
-    t.string "info"
-    t.string "advice"
-    t.string "stats"
+    t.integer "url"
+    t.string "role"
+    t.string "info_id"
+    t.string "performance_id"
+    t.string "stats_id"
+    t.string "value_id"
+  end
+
+  create_table "stats", force: :cascade do |t|
+    t.integer "player_id"
+    t.string "match_played"
+    t.string "goals_cored"
+    t.string "yellow_cards"
+    t.string "red_cards"
+    t.string "assists"
+    t.string "penalties"
   end
 
   create_table "teams", force: :cascade do |t|
     t.string "name"
-    t.string "name2"
+    t.string "url"
   end
 
-  create_table "url_infos", force: :cascade do |t|
-    t.string "name_url"
-    t.string "team_url"
-    t.string "id_url"
+  create_table "values", force: :cascade do |t|
+    t.integer "player_id"
+    t.string "initial_value"
+    t.string "value"
   end
 
 end
