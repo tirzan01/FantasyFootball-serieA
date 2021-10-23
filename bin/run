@@ -2,7 +2,8 @@
 
 require_relative '../config/environment.rb'
 
-FantasyFootball.new.choose_team
+# FantasyFootball.new.choose_team
 
-# Scraper.new.scrape_player_details('https://www.fantacalcio.it/squadre/Atalanta/MURIEL/507')
+Scraper.new.scrape_player_stats('https://www.fantacalcio.it/squadre/Atalanta/MURIEL/507')
 
+# Scraper.new.scrape_player_stats('https://www.fantacalcio.it/squadre/Atalanta/Musso/2792')
