@@ -1,0 +1,8 @@
+#!/usr/bin/env ruby
+
+require_relative '../config/environment.rb'
+
+FantasyFootball.new.choose_team
+
+# Scraper.new.scrape_player_details('https://www.fantacalcio.it/squadre/Atalanta/MURIEL/507')
+
