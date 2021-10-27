@@ -22,3 +22,4 @@ gem "rspec", "~> 3.0"
  gem 'database_cleaner'
  gem 'awesome_print'
  gem "tty-prompt"
+ gem 'rainbow'

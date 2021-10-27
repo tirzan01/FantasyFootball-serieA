@@ -10,53 +10,33 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 6) do
-
-  create_table "info", force: :cascade do |t|
-    t.integer "player_id"
-    t.string "dob"
-    t.string "height"
-    t.string "weight"
-    t.string "nationality"
-    t.string "shirt_number"
-  end
-
-  create_table "performance", force: :cascade do |t|
-    t.integer "player_id"
-    t.string "avarage_performance"
-    t.string "avarage_fantasy_performance"
-  end
+ActiveRecord::Schema.define(version: 2) do
 
   create_table "players", force: :cascade do |t|
     t.string "name"
     t.integer "team_id"
-    t.integer "url"
+    t.string "url"
     t.string "role"
-    t.string "info_id"
-    t.string "performance_id"
-    t.string "stats_id"
-    t.string "value_id"
-  end
-
-  create_table "stats", force: :cascade do |t|
-    t.integer "player_id"
-    t.string "match_played"
-    t.string "goals_cored"
-    t.string "yellow_cards"
-    t.string "red_cards"
-    t.string "assists"
-    t.string "penalties"
+    t.string "dob"
+    t.integer "height"
+    t.integer "weight"
+    t.string "nationality"
+    t.integer "shirt_number"
+    t.string "avarage_performance"
+    t.string "avarage_fantasy_performance"
+    t.integer "match_played"
+    t.integer "goals"
+    t.integer "yellow_cards"
+    t.integer "red_cards"
+    t.integer "assists"
+    t.integer "penalties"
+    t.integer "initial_price"
+    t.integer "price"
   end
 
   create_table "teams", force: :cascade do |t|
     t.string "name"
     t.string "url"
-  end
-
-  create_table "values", force: :cascade do |t|
-    t.integer "player_id"
-    t.string "initial_value"
-    t.string "value"
   end
 
 end

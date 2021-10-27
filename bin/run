@@ -1,9 +1,8 @@
 #!/usr/bin/env ruby
 
-require_relative '../config/environment.rb'
+require_relative '../lib/fantasy_footbal_serie_a.rb'
 
-# FantasyFootball.new.choose_team
+# FantasyFootballSerieA::CLI.new.call
+FantasyFootballSerieA::Scraper.new.update_all
 
-Scraper.new.scrape_player_stats('https://www.fantacalcio.it/squadre/Atalanta/MURIEL/507')
-
-# Scraper.new.scrape_player_stats('https://www.fantacalcio.it/squadre/Atalanta/Musso/2792')
+# system('rake db:migrate:reset')
