@@ -1,10 +1,10 @@
 # frozen_string_literal: true
 
-require_relative "lib/fantacalcio/version"
+require_relative "lib/fantasy_footbal_serie_a/version"
 
 Gem::Specification.new do |spec|
   spec.name          = "fantacalcio"
-  spec.version       = Fantacalcio::VERSION
+  spec.version       = FantasyFootballSerieA::VERSION
   spec.authors       = ["thomas"]
   spec.email         = ["thomasmonta98@gmail.com"]
 

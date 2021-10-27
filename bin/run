@@ -2,6 +2,12 @@
 
 require_relative '../lib/fantasy_footbal_serie_a.rb'
 
+require 'sinatra/activerecord'
+require 'sinatra/activerecord/rake'
+
+Rake::Task['db:drop'].invoke
+Rake::Task['db:migrate'].invoke
+
 # FantasyFootballSerieA::CLI.new.call
 FantasyFootballSerieA::Scraper.new.update_all
 
