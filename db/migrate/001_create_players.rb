@@ -17,7 +17,7 @@ class CreatePlayers < ActiveRecord::Migration[5.2]
       t.integer :yellow_cards
       t.integer :red_cards
       t.integer :assists
-      t.integer :penalties
+      t.string :penalties
       t.integer :initial_price
       t.integer :price
     end

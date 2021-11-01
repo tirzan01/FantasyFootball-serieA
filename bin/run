@@ -5,10 +5,18 @@ require_relative '../lib/fantasy_footbal_serie_a.rb'
 require 'sinatra/activerecord'
 require 'sinatra/activerecord/rake'
 
-Rake::Task['db:drop'].invoke
-Rake::Task['db:migrate'].invoke
+FantasyFootballSerieA::CLI.new.call
 
-# FantasyFootballSerieA::CLI.new.call
-FantasyFootballSerieA::Scraper.new.update_all
 
-# system('rake db:migrate:reset')
+# player = FantasyFootballSerieA::Player.find_by_id(4)
+
+#     player.match_played = 1000
+#     player.goals = 1000
+#     player.yellow_cards = 1000
+#     player.red_cards = 1000
+#     player.assists = 1000
+#     player.penalties = '1000/1000'
+#     player.initial_price = 1000
+#     player.price = 1000
+
+# player.save

@@ -29,7 +29,7 @@ ActiveRecord::Schema.define(version: 2) do
     t.integer "yellow_cards"
     t.integer "red_cards"
     t.integer "assists"
-    t.integer "penalties"
+    t.string "penalties"
     t.integer "initial_price"
     t.integer "price"
   end

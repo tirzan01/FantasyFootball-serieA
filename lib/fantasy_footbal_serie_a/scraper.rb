@@ -28,7 +28,7 @@ class FantasyFootballSerieA::Scraper
   private
 
   def scrape_teams
-    # reset_db
+    reset_db
     html = URI.open('https://www.fantacalcio.it/squadre')
     doc = Nokogiri::HTML(html)
     teams = doc.css('.headline-content')
@@ -62,7 +62,7 @@ class FantasyFootballSerieA::Scraper
       role: infos['Ruolo Classic'],
       dob: infos['Data di nascita'],
       height: infos['Altezza'].split(' ').first.to_i,
-      weight: get_weight(infos['Peso']), #todo
+      weight: get_weight(infos['Peso']),
       nationality: infos['Nazionalità'],
       shirt_number: infos['Numero maglia'].to_i,
       avarage_performance: details['avarage_performance'],
@@ -72,7 +72,7 @@ class FantasyFootballSerieA::Scraper
       yellow_cards: details['yellow_cards'].to_i,
       red_cards: details['red_cards'].to_i,
       assists: details['assists'].to_i,
-      penalties: details['penalties'].to_i,
+      penalties: details['penalties'],
       initial_price: details['initial_price'].to_i,
       price: details['price'].to_i
     }
@@ -87,7 +87,7 @@ class FantasyFootballSerieA::Scraper
     details['penalties'] = details['penalties'].gsub(/su/, '/')
     details_on_page2 = doc.css('p.nbig2')
     details_on_page2.each.with_index(6) do |stat, i|
-      break if i > 9
+      break if i > 9 # all informations after are not useful for this CLI
       details["#{@stat_names["#{i}"]}"] = stat.text
     end
     details
@@ -129,9 +129,10 @@ class FantasyFootballSerieA::Scraper
     player.price = attrs[:price]
   end
 
-  # def reset_db
-  #   DB[:conn].execute('DROP TABLE teams, players')
-  # end
+  def reset_db
+    Rake::Task['db:drop'].invoke
+    Rake::Task['db:migrate'].invoke
+  end
 
 end
 

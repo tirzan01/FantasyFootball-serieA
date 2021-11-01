@@ -15,9 +15,9 @@ class FantasyFootballSerieA::CLI
     phrase = 'press enter to start the application or press "h" for help'
     choices = [
       { key: "s", name: "start", value: 's' },
-      { key: "g", name: "game description", value: 'g' }, #todo
+      { key: "g", name: "game description", value: 'g' },
       { key: "u", name: "update all players", value: 'u' },
-      { key: "a", name: "application description", value: 'a' }, #todo
+      { key: "a", name: "application description", value: 'a' },
       { key: "e", name: "exit", value: 'e' }
     ]
     input = @prompt.expand(phrase, choices)
@@ -43,7 +43,7 @@ class FantasyFootballSerieA::CLI
   def display_teams
     puts 'Please select one from the following team or press "h" for help'
     teams = FantasyFootballSerieA::Team.choices
-    teams.each.with_index { |team, i| puts i.even? ? Rainbow(team[0]).blue : team[0] }
+    teams.each { |team| puts team[0] }
     choose_team(teams)
   end
 
@@ -87,7 +87,7 @@ class FantasyFootballSerieA::CLI
     when 'b'
       display_teams
     when 'h'
-      choose_player_help
+      choose_player_help(players)
       choose_player(players)
     when 'e'
       exit
@@ -120,7 +120,7 @@ class FantasyFootballSerieA::CLI
     when 'v'
       player.display_price
     when 'u'
-      Scraper.new.update_player(player)
+      FantasyFootballSerieA::Scraper.new.update_player(player)
     when 'b'
       display_players(player.team)
     when 'e'
@@ -132,15 +132,16 @@ class FantasyFootballSerieA::CLI
 
   def choose_team_help(teams)
     puts "[1, #{teams.size}] - select corrisponding team"
-    puts 'e - exit application'
-    puts 'h - print help'
+    puts "b - back to start"
+    puts "e - exit application"
+    puts "h - print help"
   end
 
   def choose_player_help(players)
     puts "[1, #{players.size}] - select corrisponding player"
-    puts 'b - back to teams selection'
-    puts 'e - exit application'
-    puts 'h - print help'
+    puts "b - back to teams selection"
+    puts "e - exit application"
+    puts "h - print help"
   end
 
   def game_description
@@ -173,15 +174,15 @@ class FantasyFootballSerieA::CLI
   end
 
   def update_all_warning
-    puts Rainbow('').yellow
-    puts Rainbow('------------------------------WARNING-------------------------------').yellow
-    puts Rainbow('').yellow
-    puts Rainbow('you are about to update the whole database,').yellow
-    puts Rainbow('this process will take several minutes').yellow
-    puts Rainbow('it is best to run this update only do it after a transfer market!').yellow
-    puts Rainbow('to see the up to date details its advised to:').yellow
+    puts Rainbow("").yellow
+    puts Rainbow("------------------------------WARNING-------------------------------").yellow
+    puts Rainbow("").yellow
+    puts Rainbow("you are about to update the whole database,").yellow
+    puts Rainbow("this process will take several minutes").yellow
+    puts Rainbow("it is best to run this update only do it after a transfer market!").yellow
+    puts Rainbow("to see the up to date details its advised to:").yellow
     puts Rainbow('select a player => run "u" to update the player\'s details').yellow
-    puts Rainbow('').yellow
+    puts Rainbow("").yellow
   end
 
 end
